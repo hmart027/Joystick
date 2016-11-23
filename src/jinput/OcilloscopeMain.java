@@ -18,7 +18,7 @@ import main.Window;
 import msg.CheckSum;
 import msg.MAVLink;
 import msg.MAVLinkTypes.MAV_MESSAGE;
-import plotter.GradientPane;
+import plotter.GraphPanel;
 import plotter.d3.Vector3D;
 import tools.VectorConversions;
 import bytetools.ByteTools;
@@ -27,8 +27,8 @@ import bytetools.ByteTools;
 public class OcilloscopeMain{		
 	
 	private static Window window; 			// The application window
-	public static GradientPane pane1 = null; 		// Pane containing filled rectangles
-	public static GradientPane pane2 = null; 		// Pane containing filled rectangles
+	public static GraphPanel pane1 = null; 		// Pane containing filled rectangles
+	public static GraphPanel pane2 = null; 		// Pane containing filled rectangles
 	
 	static double Vvalues[]=new double[101];
     
@@ -111,8 +111,8 @@ public class OcilloscopeMain{
 		
 		//Sends the size to the class
 		Dimension dim = window.getContentPane().getSize();
-		pane1 = new GradientPane(dim.width,dim.height/2-2); // Pane containing filled rectangles
-		pane2 = new GradientPane(dim.width,dim.height/2-2); // Pane containing filled rectangles
+		pane1 = new GraphPanel(dim.width,dim.height/2-2); // Pane containing filled rectangles
+		pane2 = new GraphPanel(dim.width,dim.height/2-2); // Pane containing filled rectangles
 		
 		//Adds the background picture for the first time
 		JPanel pane = new JPanel();
