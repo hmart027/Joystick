@@ -4,7 +4,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ByteTools"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Plotter"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/XbeeComms"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jinput"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/XBeeComms"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
