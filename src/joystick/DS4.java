@@ -12,6 +12,7 @@ public class DS4 extends Thread implements Gamepad{
 	private Component lX;
 	private Component lY;
 	private Component rY;
+	private Component rX;
 	private Component arrows;
 	
 	private Component trigger;
@@ -21,6 +22,7 @@ public class DS4 extends Thread implements Gamepad{
 		this.sleepFor = (int)(1.0/pollRate * 1000);
 		lX 	= controller.getComponent(Component.Identifier.Axis.X);
 		lY 	= controller.getComponent(Component.Identifier.Axis.Y);
+		rX 	= controller.getComponent(Component.Identifier.Axis.Z);
 		rY 	= controller.getComponent(Component.Identifier.Axis.RZ);
 		arrows 	= controller.getComponent(Component.Identifier.Axis.POV);
 		if(start)
@@ -48,6 +50,10 @@ public class DS4 extends Thread implements Gamepad{
 	
 	public double getRY(){
 		return rY.getPollData();
+	}
+	
+	public double getRX(){
+		return rX.getPollData();
 	}
 	
 	public double getArrows(){
