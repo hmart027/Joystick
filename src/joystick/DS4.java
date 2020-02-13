@@ -22,8 +22,8 @@ public class DS4 extends Thread implements Gamepad{
 		this.sleepFor = (int)(1.0/pollRate * 1000);
 		lX 	= controller.getComponent(Component.Identifier.Axis.X);
 		lY 	= controller.getComponent(Component.Identifier.Axis.Y);
-		rX 	= controller.getComponent(Component.Identifier.Axis.Z);
-		rY 	= controller.getComponent(Component.Identifier.Axis.RZ);
+		rX 	= controller.getComponent(Component.Identifier.Axis.RX);
+		rY 	= controller.getComponent(Component.Identifier.Axis.RY);
 		arrows 	= controller.getComponent(Component.Identifier.Axis.POV);
 		if(start)
 			this.start();
