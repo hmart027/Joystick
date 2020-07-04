@@ -14,6 +14,10 @@ public class DS4 extends Thread implements Gamepad{
 	private Component rY;
 	private Component rX;
 	private Component arrows;
+	private Component l2;
+	private Component r2;
+	private Component l1;
+	private Component r1;
 	
 	private Component trigger;
 	
@@ -24,6 +28,10 @@ public class DS4 extends Thread implements Gamepad{
 		lY 	= controller.getComponent(Component.Identifier.Axis.Y);
 		rX 	= controller.getComponent(Component.Identifier.Axis.Z);
 		rY 	= controller.getComponent(Component.Identifier.Axis.RZ);
+		l2  = controller.getComponent(Component.Identifier.Axis.RX);
+		r2  = controller.getComponent(Component.Identifier.Axis.RY);
+		l1  = controller.getComponent(Component.Identifier.Button._4);
+		r1  = controller.getComponent(Component.Identifier.Button._5);
 		arrows 	= controller.getComponent(Component.Identifier.Axis.POV);
 		if(start)
 			this.start();
@@ -54,6 +62,22 @@ public class DS4 extends Thread implements Gamepad{
 	
 	public double getRX(){
 		return rX.getPollData();
+	}
+	
+	public double getR2(){
+		return r2.getPollData();
+	}
+
+	public double getL2(){
+		return l2.getPollData();
+	}
+	
+	public double getR1(){
+		return r1.getPollData();
+	}
+
+	public double getL1(){
+		return l1.getPollData();
 	}
 	
 	public double getArrows(){
