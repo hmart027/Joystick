@@ -24,15 +24,29 @@ public class DS4 extends Thread implements Gamepad{
 	private DS4(Controller c, double pollRate, boolean start){
 		this.controller = c;
 		this.sleepFor = (int)(1.0/pollRate * 1000);
-		lX 	= controller.getComponent(Component.Identifier.Axis.X);
-		lY 	= controller.getComponent(Component.Identifier.Axis.Y);
-		rX 	= controller.getComponent(Component.Identifier.Axis.Z);
-		rY 	= controller.getComponent(Component.Identifier.Axis.RZ);
-		l2  = controller.getComponent(Component.Identifier.Axis.RX);
-		r2  = controller.getComponent(Component.Identifier.Axis.RY);
-		l1  = controller.getComponent(Component.Identifier.Button._4);
-		r1  = controller.getComponent(Component.Identifier.Button._5);
-		arrows 	= controller.getComponent(Component.Identifier.Axis.POV);
+		
+		String OS = System.getProperty("os.name").toLowerCase();
+		if(OS.indexOf("win") >= 0) {
+			lX 	= controller.getComponent(Component.Identifier.Axis.X);
+			lY 	= controller.getComponent(Component.Identifier.Axis.Y);
+			rX 	= controller.getComponent(Component.Identifier.Axis.Z);
+			rY 	= controller.getComponent(Component.Identifier.Axis.RZ);
+			l2  = controller.getComponent(Component.Identifier.Axis.RX);
+			r2  = controller.getComponent(Component.Identifier.Axis.RY);
+			l1  = controller.getComponent(Component.Identifier.Button._4);
+			r1  = controller.getComponent(Component.Identifier.Button._5);
+			arrows 	= controller.getComponent(Component.Identifier.Axis.POV);
+		}else if(OS.indexOf("nix") >= 0 || OS.indexOf("nux") >= 0 || OS.indexOf("aix") > 0) {
+			lX 	= controller.getComponent(Component.Identifier.Axis.X);
+			lY 	= controller.getComponent(Component.Identifier.Axis.Y);
+			rX 	= controller.getComponent(Component.Identifier.Axis.RX);
+			rY 	= controller.getComponent(Component.Identifier.Axis.RY);
+			l2  = controller.getComponent(Component.Identifier.Axis.Z);
+			r2  = controller.getComponent(Component.Identifier.Axis.RZ);
+			l1  = controller.getComponent(Component.Identifier.Button.LEFT_THUMB);
+			r1  = controller.getComponent(Component.Identifier.Button.RIGHT_THUMB);
+			arrows 	= controller.getComponent(Component.Identifier.Axis.POV);
+		}
 		if(start)
 			this.start();
 	}
@@ -73,11 +87,15 @@ public class DS4 extends Thread implements Gamepad{
 	}
 	
 	public double getR1(){
-		return r1.getPollData();
+		if(r1!=null)
+			return r1.getPollData();
+		return 0;
 	}
 
 	public double getL1(){
-		return l1.getPollData();
+		if(l1!=null)
+			return l1.getPollData();
+		return 0;
 	}
 	
 	public double getArrows(){
