@@ -18,6 +18,8 @@ public class DS4 extends Thread implements Gamepad{
 	private Component r2;
 	private Component l1;
 	private Component r1;
+	private int invertL2 = 1;
+	private int invertR2 = 1;
 	
 	private Component trigger;
 	
@@ -79,11 +81,11 @@ public class DS4 extends Thread implements Gamepad{
 	}
 	
 	public double getR2(){
-		return r2.getPollData();
+		return r2.getPollData()*invertR2;
 	}
 
 	public double getL2(){
-		return l2.getPollData();
+		return l2.getPollData()*invertL2;
 	}
 	
 	public double getR1(){
